@@ -4,6 +4,28 @@
 version: '3.8'
 
 services:
+  # Future API Development Service (Node.js)
+  # Use: docker-compose --profile api up -d
+  api:
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    container_name: cardboard_api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=mysql
+    depends_on:
+      - mysql
+    profiles:
+      - api  # Only start when explicitly requested
+    networks:
+      - tcg_network
+
   # MySQL Database Service
   mysql:
     image: mysql:8.0

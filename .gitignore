@@ -74,3 +74,7 @@ yarn.lock
 
 # Do NOT ignore sample/template files
 !sql/00_security_setup.sql  # Keep template with default passwords for setup reference
+
+# Personal AI assistant preferences (optional - remove if you want to share)
+.copilot-preferences.md
+.copilot-context-quick.md
