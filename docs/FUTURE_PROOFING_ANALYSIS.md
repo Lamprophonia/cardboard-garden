@@ -203,7 +203,16 @@ INSERT INTO tcg_shared.games (name, abbreviation, description, publisher, databa
 VALUES ('New Game', 'NG', 'Description', 'Publisher', 'tcg_newgame');
 ```
 
-### **4. Test Integration**
+### **4. Docker Integration**
+```bash
+# Restart Docker containers to apply changes
+docker-compose restart mysql
+
+# Verify new game database
+docker exec -it tcg_mysql mysql -u tcg_app -p -e "SHOW DATABASES;"
+```
+
+### **5. Test Integration**
 ```sql
 -- Existing test queries automatically include new game
 CALL GetUserCollectionSummary(1);

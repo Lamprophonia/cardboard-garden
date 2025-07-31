@@ -1,4 +1,4 @@
-# TCG Card Collection Manager - Journal Archive
+# Cardboard Garden - Journal Archive
 
 This directory contains detailed development journals organized by project phases.
 

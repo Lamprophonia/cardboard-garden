@@ -1,4 +1,4 @@
-# TCG Card Collection Manager - Project Journal
+# Cardboard Garden - Project Journal
 
 > **A living document tracking the evolution, decisions, and future plans of this project**
 
@@ -101,7 +101,7 @@
 
 ### **Current Structure (Organized)**
 ```
-tcg_card_collection_manager/
+cardboard-garden/
 ├── app/                           # Application layer (future development)
 ├── data/                          # Data files and imports (future use)
 ├── docs/                          # Project documentation
@@ -334,10 +334,10 @@ tcg_card_collection_manager/
 - **Actions**: Complete Git and GitHub setup with successful repository publication
 - **Configuration**: Set username "Lamprophonia" and email "brianmarini@gmail.com"
 - **Initial commit**: Successfully created with comprehensive project description (commit ce2782f)
-- **GitHub setup**: Created Personal Access Token "TCG Manager - Git Operations"
+- **GitHub setup**: Created Personal Access Token "Cardboard Garden - Git Operations"
 - **Authentication**: Used secure browser-based authentication flow
 - **Push success**: 28 objects, 38.45 KiB uploaded successfully
-- **Repository URL**: https://github.com/Lamprophonia/tcg_card_collection_manager
+- **Repository URL**: https://github.com/Lamprophonia/cardboard-garden
 - **Status**: **PROJECT NOW LIVE ON GITHUB!** 🚀
 
 ### **July 30, 2025 - Project Organization & Cleanup**

@@ -1,4 +1,4 @@
-# Hybrid Architecture for TCG Card Collection Manager
+# Hybrid Architecture for Cardboard Garden
 
 This hybrid approach combines the best of both unified and separated architectures.
 

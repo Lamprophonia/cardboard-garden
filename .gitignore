@@ -1,10 +1,20 @@
-# TCG Card Collection Manager - .gitignore
+# Cardboard Garden - .gitignore
 
 # Database connection files with real credentials
 *.env
 .env*
 config/database.json
 config/production.json
+config/.env
+
+# Docker-related files
+docker-compose.override.yml
+.docker/
+
+# SonarQube analysis files
+.sonarqube/
+.scannerwork/
+config/sonar-project.properties.bak
 
 # Database dumps and backups
 *.sql.backup

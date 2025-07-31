@@ -1,8 +1,10 @@
-# 🃏 TCG Card Collection Manager
+# � Cardboard Garden
 
-> **A comprehensive multi-game trading card collection management system with hybrid database architecture**
+> **Cultivate and nurture your trading card collections across multiple TCG universes**
 
 [![Database](https://img.shields.io/badge/Database-MySQL%2FMariaDB-blue)](https://dev.mysql.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue)](DOCKER_README.md)
+[![Code Quality](https://img.shields.io/badge/SonarQube-Integrated-green)](SONARQUBE_SETUP.md)
 [![Architecture](https://img.shields.io/badge/Architecture-Hybrid-green)](docs/FUTURE_PROOFING_ANALYSIS.md)
 [![Games](https://img.shields.io/badge/Games-4%20Supported-orange)](#supported-games)
 [![Security](https://img.shields.io/badge/Security-Production%20Ready-red)](sql/SECURITY_BEST_PRACTICES.md)
@@ -11,11 +13,27 @@
 
 ## 🚀 **Quick Start**
 
+### **🐳 Docker (Recommended)**
 ```bash
-# 1. Clone/download the project
+# 1. Clone the project
 git clone <repository-url>
-cd tcg_card_collection_manager
+cd cardboard-garden
 
+# 2. Start services with Docker
+docker-compose up -d mysql phpmyadmin sonarqube
+
+# 3. Access web interfaces:
+# Database: http://localhost:8080 (tcg_app / tcg_app_password_2024)
+# Code Quality: http://localhost:9000 (admin / admin)
+
+# 4. Use development scripts
+scripts/dev.bat start-db     # Windows
+scripts/dev.sh start-db      # Unix/Linux
+```
+
+### **💻 Manual Setup**
+```bash
+# 1. Install MySQL/MariaDB manually
 # 2. Set up database (IMPORTANT: Change default passwords first!)
 cd sql
 nano 00_security_setup.sql  # Update passwords!
@@ -25,7 +43,9 @@ mysql -u root -p < setup.sql
 mysql -u tcg_app -p
 ```
 
-**🎯 Ready to manage your card collection across multiple TCG games!**
+**🎯 Ready to cultivate your card collection garden across multiple TCG universes!**
+
+📖 [**Docker Guide**](docker/README.md) | 🛠️ [**Manual Setup**](sql/GETTING_STARTED.md) | 🔍 [**SonarQube Setup**](docker/sonarqube/README.md) | 📁 [**Project Structure**](PROJECT_STRUCTURE.md) | 🎨 [**Brand Assets**](docs/BRAND_ASSETS.md)
 
 ---
 
@@ -61,7 +81,7 @@ mysql -u tcg_app -p
 ## 📁 **Project Structure**
 
 ```
-tcg_card_collection_manager/
+cardboard-garden/
 ├── 📱 app/                        # Application layer (future development)
 ├── 📊 data/                       # Data files and imports (future use)  
 ├── 📚 docs/                       # Project documentation

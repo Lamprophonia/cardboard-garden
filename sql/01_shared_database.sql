@@ -1,4 +1,4 @@
--- Hybrid Database Architecture for TCG Card Collection Manager
+-- Hybrid Database Architecture for Cardboard Garden
 -- This approach uses shared infrastructure with separate card databases per game
 
 -- =============================================================================

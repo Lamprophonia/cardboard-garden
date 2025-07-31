@@ -1,4 +1,4 @@
-# TCG Card Collection Manager - Master Project Journal
+# Cardboard Garden - Master Project Journal
 
 > **Project overview, current status, and development roadmap**
 
@@ -17,7 +17,7 @@ A comprehensive database system for managing Trading Card Game (TCG) collections
 - ✅ **Future-proof design**: Easy to add new games without schema conflicts
 
 ### **Repository**
-- **GitHub**: https://github.com/Lamprophonia/tcg_card_collection_manager
+- **GitHub**: https://github.com/Lamprophonia/cardboard-garden
 - **Status**: Live and publicly available
 - **License**: Open source
 
@@ -61,7 +61,7 @@ A comprehensive database system for managing Trading Card Game (TCG) collections
 
 ### **File Structure**
 ```
-tcg_card_collection_manager/
+cardboard-garden/
 ├── app/                    # Application layer (Phase 2)
 ├── data/                   # Data files (Phase 2)
 ├── docs/                   # Project documentation

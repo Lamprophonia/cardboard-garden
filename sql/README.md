@@ -1,4 +1,4 @@
-# TCG Card Collection Manager - Database Schema
+# Cardboard Garden - Database Schema
 
 This database uses a **hybrid architecture** with shared infrastructure and game-specific optimized databases.
 
@@ -73,7 +73,8 @@ mysql -u root -p < setup.sql
 ### **Installation**
 ```bash
 # Clone/download the project
-cd tcg_card_collection_manager/sql
+```bash
+cd cardboard-garden/sql
 
 # Review and update passwords first!
 nano 00_security_setup.sql
@@ -131,4 +132,4 @@ VALUES ('New Game', 'NG', 'Description', 'Publisher', 'tcg_newgame');
 
 ---
 
-**This hybrid architecture provides the perfect balance of performance, scalability, and maintainability for a multi-game TCG collection manager.**
+**This hybrid architecture provides the perfect balance of performance, scalability, and maintainability for a multi-game TCG collection system.**

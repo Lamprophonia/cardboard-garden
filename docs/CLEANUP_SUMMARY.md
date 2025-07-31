@@ -4,7 +4,7 @@
 
 ### **🏗️ Project Structure Organized**
 ```
-tcg_card_collection_manager/
+cardboard-garden/
 ├── 📋 README.md                   # Main project overview & quick start
 ├── 🔒 .gitignore                  # Version control exclusions
 ├── 📱 app/                        # Future application layer
