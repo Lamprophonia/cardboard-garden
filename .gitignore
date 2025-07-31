@@ -29,6 +29,11 @@ dumps/
 *.swo
 *~
 
+# Environment-specific setup files
+ubuntu-setup/
+windows-setup/
+macos-setup/
+
 # OS generated files
 .DS_Store
 .DS_Store?
