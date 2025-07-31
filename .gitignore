@@ -33,6 +33,9 @@ dumps/
 ubuntu-setup/
 windows-setup/
 macos-setup/
+setup-*.md
+*-extensions.txt
+environment-setup.*
 
 # OS generated files
 .DS_Store
