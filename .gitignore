@@ -1,0 +1,66 @@
+# TCG Card Collection Manager - .gitignore
+
+# Database connection files with real credentials
+*.env
+.env*
+config/database.json
+config/production.json
+
+# Database dumps and backups
+*.sql.backup
+*.dump
+backups/
+dumps/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Application specific
+node_modules/
+dist/
+build/
+tmp/
+temp/
+
+# Future app development files
+app/node_modules/
+app/dist/
+app/build/
+app/.env*
+
+# Test coverage
+coverage/
+.nyc_output
+
+# Package managers
+package-lock.json
+yarn.lock
+
+# Do NOT ignore sample/template files
+!sql/00_security_setup.sql  # Keep template with default passwords for setup reference
