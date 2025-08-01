@@ -3,8 +3,8 @@
 > **Cultivate and nurture your trading card collections across multiple TCG universes**
 
 [![Database](https://img.shields.io/badge/Database-MySQL%2FMariaDB-blue)](https://dev.mysql.com/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue)](DOCKER_README.md)
-[![Code Quality](https://img.shields.io/badge/SonarQube-Integrated-green)](SONARQUBE_SETUP.md)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.2-brightgreen)](https://spring.io/projects/spring-boot)
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://openjdk.org/)
 [![Architecture](https://img.shields.io/badge/Architecture-Hybrid-green)](docs/FUTURE_PROOFING_ANALYSIS.md)
 [![Games](https://img.shields.io/badge/Games-4%20Supported-orange)](#supported-games)
 [![Security](https://img.shields.io/badge/Security-Production%20Ready-red)](sql/SECURITY_BEST_PRACTICES.md)
@@ -13,25 +13,27 @@
 
 ## 🚀 **Quick Start**
 
-### **🐳 Docker (Recommended)**
+### **☕ Spring Boot API (Current Implementation)**
 ```bash
 # 1. Clone the project
 git clone <repository-url>
 cd cardboard-garden
 
-# 2. Start services with Docker
-docker-compose up -d mysql phpmyadmin sonarqube
+# 2. Set up database (IMPORTANT: Change default passwords first!)
+cd sql
+# Update passwords in 00_security_setup.sql first!
+mysql -u root -p < setup.sql
 
-# 3. Access web interfaces:
-# Database: http://localhost:8080 (tcg_app / tcg_app_password_2024)
-# Code Quality: http://localhost:9000 (admin / admin)
+# 3. Start the Spring Boot API
+cd ../api-java
+mvn spring-boot:run
 
-# 4. Use development scripts
-scripts/dev.bat start-db     # Windows
-scripts/dev.sh start-db      # Unix/Linux
+# 4. Access the API:
+# API: http://localhost:3001/api
+# Database: Connect directly to MySQL on localhost:3306
 ```
 
-### **💻 Manual Setup**
+### **💻 Manual Database Setup**
 ```bash
 # 1. Install MySQL/MariaDB manually
 # 2. Set up database (IMPORTANT: Change default passwords first!)
@@ -45,7 +47,7 @@ mysql -u tcg_app -p
 
 **🎯 Ready to cultivate your card collection garden across multiple TCG universes!**
 
-️ [**Manual Setup**](sql/GETTING_STARTED.md) | 🎨 [**Brand Assets**](docs/project/BRAND_ASSETS.md) | � [**Documentation**](docs/README.md)
+🗃️ [**Database Setup**](sql/GETTING_STARTED.md) | ☕ [**Spring Boot API**](api-java/README.md) | 🎨 [**Brand Assets**](docs/project/BRAND_ASSETS.md) | 📚 [**Documentation**](docs/README.md)
 
 ---
 
@@ -82,11 +84,12 @@ mysql -u tcg_app -p
 
 ```
 cardboard-garden/
-├── 📱 app/                        # Application layer (future development)
-├── 📊 data/                       # Data files and imports (future use)  
+├── ☕ api-java/                    # Spring Boot API implementation
+├── 📱 app/                        # Frontend application (React/Vite)
+├── 📊 data/                       # Data files and imports
 ├── 📚 docs/                       # Project documentation
 │   ├── PROJECT_JOURNAL.md         # Complete project evolution history
-│   └── FUTURE_PROOFING_ANALYSIS.md # Architecture scalability analysis
+│   └── journals/                  # Development session logs
 ├── 🗃️  sql/                        # Database implementation
 │   ├── setup.sql                  # 🎯 Master setup script (START HERE)
 │   ├── 00-09_*.sql               # Database components
@@ -99,7 +102,9 @@ cardboard-garden/
 ## 🛠️ **Setup & Installation**
 
 ### **Prerequisites**
-- **MySQL 5.7+** or **MariaDB 10.2+**
+- **Java 17+** - Required for Spring Boot API
+- **Maven 3.6+** - For building and running the API
+- **MySQL 5.7+** or **MariaDB 10.2+** - Database server
 - **UTF8MB4** character set support
 - **Administrative privileges** for user creation
 
@@ -116,10 +121,11 @@ cardboard-garden/
 ### **Installation Steps**
 1. **📥 Download/Clone** the project
 2. **🔐 Update passwords** in `sql/00_security_setup.sql`
-3. **🚀 Run setup**: `mysql -u root -p < sql/setup.sql`
-4. **✅ Test**: Connect with `mysql -u tcg_app -p`
+3. **�️ Setup database**: `mysql -u root -p < sql/setup.sql`
+4. **☕ Start API**: `cd api-java && mvn spring-boot:run`
+5. **✅ Test**: Visit `http://localhost:3001/api`
 
-**Result**: 5 databases created with security hardening and sample data!
+**Result**: Full-stack application with database, API, and security!
 
 ---
 
@@ -162,14 +168,15 @@ cardboard-garden/
 
 ## 🔮 **Roadmap & Future Development**
 
-### **Phase 2: Application Layer**
-- [ ] **REST API** development
-- [ ] **Authentication system** integration
-- [ ] **Business logic** implementation
+### **Phase 2: Application Layer (In Progress)**
+- [x] **Spring Boot API** - Core REST API implementation
+- [x] **Database connectivity** - MySQL integration with Hibernate
+- [x] **Security framework** - JWT authentication system
+- [ ] **API endpoints** - Complete CRUD operations
 - [ ] **Market data integration** (TCGPlayer, etc.)
 
 ### **Phase 3: User Interface**
-- [ ] **Web application** with modern UI/UX
+- [ ] **React frontend** - Modern web application UI
 - [ ] **Mobile applications** (iOS/Android)
 - [ ] **Advanced features** (deck building, trading, analytics)
 

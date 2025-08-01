@@ -35,7 +35,7 @@ echo "[mysqld]
 max_connections = 200
 innodb_buffer_pool_size = 512M" > config/mysql-custom.cnf
 
-# Reference in docker-compose.override.yml
+# Reference in your MySQL server configuration
 ```
 
 ## 🔒 **Security Best Practices**

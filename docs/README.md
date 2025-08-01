@@ -6,16 +6,15 @@ Welcome to the comprehensive documentation for **Cardboard Garden** - your multi
 
 ### **🚀 Getting Started**
 - [**Main README**](../README.md) - Project overview and quick start
-- [**Docker Setup**](../docker/README.md) - Containerized development environment
-- [**Manual Setup**](../sql/GETTING_STARTED.md) - Traditional database installation
+- [**Spring Boot API**](../api-java/README.md) - Java API implementation and setup
+- [**Database Setup**](../sql/GETTING_STARTED.md) - MySQL database installation and configuration
 
 ### **🏗️ Architecture & Design**
 - [**Future Proofing Analysis**](FUTURE_PROOFING_ANALYSIS.md) - Scalability and extensibility
 - [**Hybrid Database Architecture**](../sql/HYBRID_README.md) - Database design decisions
 
 ### **🔧 Development Tools**
-- [**SonarQube Setup**](../docker/sonarqube/README.md) - Code quality analysis
-- [**Docker & SonarQube Summary**](DOCKER_SONARQUBE_SUMMARY.md) - Integration overview
+- [**Development Journals**](journals/README.md) - Session logs and progress tracking
 - [**Scripts Guide**](../scripts/README.md) - Development automation
 
 ### **🎨 Project Identity**

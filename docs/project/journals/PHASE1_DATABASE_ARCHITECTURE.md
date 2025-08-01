@@ -254,7 +254,7 @@ cardboard-garden/
 - [ ] **Redis caching**: Performance for frequent queries  
 - [ ] **GraphQL API**: Flexible data fetching
 - [ ] **Microservices**: Game-specific API services
-- [ ] **Docker containers**: Easy deployment and scaling
+- [ ] **Containerization**: Easy deployment and scaling options
 - [ ] **CI/CD pipeline**: Automated testing and deployment
 
 ---
