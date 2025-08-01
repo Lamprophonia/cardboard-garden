@@ -3,12 +3,14 @@ const cors = require('cors');
 const helmet = require('helmet');
 const mysql = require('mysql2/promise');
 const path = require('path');
+const fs = require('fs').promises;
+const net = require('net');
 const authService = require('./services/authService');
 const { authenticateToken, optionalAuth } = require('./middleware/auth');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+let PORT = parseInt(process.env.PORT, 10) || 3000;
 
 // Database configuration
 const dbConfig = {
@@ -338,12 +340,67 @@ app.get('/api/collection', async (req, res) => {
   }
 });
 
-// Start server
-connectDatabase().then(() => {
-  app.listen(PORT, () => {
-    console.log(`🃏 Cardboard Garden API running on port ${PORT}`);
-    console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-    console.log(`🔍 Card search: http://localhost:${PORT}/api/cards/search`);
-    console.log(`📚 Collection: http://localhost:${PORT}/api/collection`);
+// Port availability checker
+async function isPortAvailable(port) {
+  return new Promise((resolve) => {
+    const server = net.createServer();
+    server.listen(port, () => {
+      server.once('close', () => resolve(true));
+      server.close();
+    });
+    server.on('error', () => resolve(false));
   });
+}
+
+// Find available port starting from preferred port
+async function findAvailablePort(startPort = 3000, maxAttempts = 5) {
+  for (let i = 0; i < maxAttempts; i++) {
+    const port = startPort + i;
+    if (await isPortAvailable(port)) {
+      return port;
+    }
+  }
+  throw new Error(`No available port found in range ${startPort}-${startPort + maxAttempts - 1}`);
+}
+
+// Write port info for frontend to discover
+async function writePortInfo(port) {
+  const portInfo = {
+    port: parseInt(port, 10),
+    url: `http://localhost:${port}`,
+    timestamp: new Date().toISOString()
+  };
+  
+  try {
+    await fs.writeFile(
+      path.join(__dirname, '..', '.api-port'), 
+      JSON.stringify(portInfo, null, 2)
+    );
+  } catch (error) {
+    console.warn('Could not write port info file:', error.message);
+  }
+}
+
+// Start server
+connectDatabase().then(async () => {
+  try {
+    // Find available port
+    PORT = await findAvailablePort(PORT);
+    
+    // Write port info for frontend
+    await writePortInfo(PORT);
+    
+    app.listen(PORT, () => {
+      console.log(`🃏 Cardboard Garden API running on port ${PORT}`);
+      if (PORT !== 3000) {
+        console.log(`⚠️  Note: Using port ${PORT} instead of default 3000`);
+      }
+      console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
+      console.log(`🔍 Card search: http://localhost:${PORT}/api/cards/search`);
+      console.log(`📚 Collection: http://localhost:${PORT}/api/collection`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error.message);
+    process.exit(1);
+  }
 });

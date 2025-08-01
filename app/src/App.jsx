@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { getApiUrl } from './utils/apiDiscovery'
 import './App.css'
 import Footer from './components/Footer'
 
@@ -7,6 +8,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [loading, setLoading] = useState(false)
   const [apiStatus, setApiStatus] = useState('checking...')
+  const [apiUrl, setApiUrl] = useState(null)
   const [hasAlternatives, setHasAlternatives] = useState(false)
   const [flippedCards, setFlippedCards] = useState({}) // Track which cards are flipped
 
@@ -27,20 +29,32 @@ function App() {
 
   // Check API health on load
   useEffect(() => {
-    fetch('http://localhost:3001/api/health')
-      .then(res => res.json())
-      .then(data => setApiStatus(`✅ ${data.message}`))
-      .catch(() => setApiStatus('❌ API not available'))
+    async function discoverApi() {
+      try {
+        const url = await getApiUrl();
+        setApiUrl(url);
+        
+        // Test the discovered API
+        const response = await fetch(`${url}/api/health`);
+        const data = await response.json();
+        setApiStatus(`✅ ${data.message}`);
+      } catch (error) {
+        setApiStatus('❌ API not available');
+        console.error('API discovery failed:', error);
+      }
+    }
+    
+    discoverApi();
   }, [])
 
   // Search for cards
   const searchCards = async () => {
-    if (!searchTerm.trim()) return
+    if (!searchTerm.trim() || !apiUrl) return
     
     setLoading(true)
     setFlippedCards({}) // Clear flipped state on new search
     try {
-      const response = await fetch(`http://localhost:3001/api/cards/search?name=${encodeURIComponent(searchTerm)}&includeAlternatives=true`)
+      const response = await fetch(`${apiUrl}/api/cards/search?name=${encodeURIComponent(searchTerm)}&includeAlternatives=true`)
       const data = await response.json()
       setCards(data.cards || [])
       setHasAlternatives(data.hasAlternatives || false)
