@@ -1,0 +1,103 @@
+/* Footer Styles - Following Cardboard Garden Design System */
+
+.cg-footer {
+  background-color: var(--cg-neutral-800, #212529);
+  color: var(--cg-neutral-100, #F8F9FA);
+  margin-top: var(--cg-space-20, 5rem);
+  padding: var(--cg-space-16, 4rem) 0 var(--cg-space-8, 2rem);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--cg-space-8, 2rem);
+  margin-bottom: var(--cg-space-8, 2rem);
+}
+
+.footer-section h3 {
+  color: var(--cg-primary-light, #4A7C2A);
+  font-family: var(--cg-font-heading, 'Poppins', 'Inter', sans-serif);
+  font-size: var(--cg-text-xl, 1.25rem);
+  margin-bottom: var(--cg-space-4, 1rem);
+}
+
+.footer-section h4 {
+  color: var(--cg-neutral-200, #E9ECEF);
+  font-family: var(--cg-font-heading, 'Poppins', 'Inter', sans-serif);
+  font-size: var(--cg-text-lg, 1.125rem);
+  margin-bottom: var(--cg-space-3, 0.75rem);
+}
+
+.footer-section p {
+  color: var(--cg-neutral-300, #DEE2E6);
+  line-height: 1.6;
+  margin-bottom: var(--cg-space-2, 0.5rem);
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  color: var(--cg-neutral-300, #DEE2E6);
+  padding: var(--cg-space-1, 0.25rem) 0;
+  font-size: var(--cg-text-sm, 0.875rem);
+}
+
+.attribution {
+  font-size: var(--cg-text-xs, 0.75rem) !important;
+  color: var(--cg-neutral-400, #CED4DA) !important;
+}
+
+.attribution a {
+  color: var(--cg-primary-light, #4A7C2A);
+  text-decoration: none;
+  transition: var(--cg-transition-base, 0.2s ease-in-out);
+}
+
+.attribution a:hover {
+  color: var(--cg-secondary-gold, #B8860B);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--cg-neutral-600, #495057);
+  padding-top: var(--cg-space-6, 1.5rem);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: var(--cg-neutral-400, #CED4DA);
+  font-size: var(--cg-text-sm, 0.875rem);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cg-footer {
+    padding: var(--cg-space-12, 3rem) 0 var(--cg-space-6, 1.5rem);
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--cg-space-6, 1.5rem);
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+}
+
+/* Dark theme support */
+[data-theme="dark"] .cg-footer {
+  background-color: var(--cg-bg-secondary, #2d2d2d);
+  border-top: 1px solid var(--cg-neutral-600, #495057);
+}
+
+/* High contrast theme support */
+[data-theme="high-contrast"] .cg-footer {
+  background-color: var(--cg-bg-primary, #000000);
+  border-top: 2px solid var(--cg-text-primary, #ffffff);
+}

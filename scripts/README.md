@@ -29,7 +29,13 @@ Receive-Job -Name CardboardFrontend -Keep
 ### **Database Scripts** (`database/`)
 - *Future database management scripts*
 
+### **Temporary Scripts** (`temp/`)
+- Analysis scripts, debugging utilities, and one-time tools
+- Automatically cleaned up after 30 days
+- See `temp/README.md` for details
+
 ### **Utility Scripts** (`utilities/`)
+- `cleanup-temp.py` - Clean up temporary files and analysis scripts
 - *Future utility and maintenance scripts*
 
 ### **Legacy Batch Scripts** (root level)
@@ -95,6 +101,20 @@ scripts\dev.bat start-all
 
 # Start SonarQube for code analysis
 scripts\dev.bat sonar
+```
+
+## 🧹 **Maintenance Commands**
+
+### **Temporary File Cleanup**
+```powershell
+# List all temporary files
+python scripts\cleanup-temp.py --list
+
+# Preview what would be cleaned (dry run)
+python scripts\cleanup-temp.py
+
+# Actually clean up old temporary files
+python scripts\cleanup-temp.py --execute
 ```
 
 ### **Linux/macOS Users**

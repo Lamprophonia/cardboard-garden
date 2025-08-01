@@ -95,4 +95,21 @@ mvn spring-boot:run                                        # ✅ Partial success
 ## Session Wrap-up
 **Completed**: Maven configuration restoration  
 **In Progress**: Database schema alignment  
-**Next Session**: Continue with schema validation resolution  
+**Next Session**: Continue with schema validation resolution
+
+## Future Feature Ideas
+**Preconstructed Product Integration** (Future Development Priority):
+- Feature to select preconstructed sets (Commander precons, starter decks, etc.)
+- Auto-add complete decklist to user's deck collection
+- Auto-add all cards from the product to user's card collection
+- Support for various product types:
+  - Magic: Commander precons, Challenger decks, Starter sets
+  - Pokemon: Theme decks, Battle decks, Starter sets
+  - Yu-Gi-Oh: Structure decks, Starter decks
+  - Lorcana: Starter decks, Gift sets
+- Implementation considerations:
+  - Need product database with complete decklists
+  - API endpoints for product selection and import
+  - Bulk card addition functionality
+  - Deck creation from predefined lists
+  - Product metadata (release date, MSRP, availability)  

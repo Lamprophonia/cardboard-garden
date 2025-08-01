@@ -48,6 +48,19 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Temporary scripts and analysis files
+scripts/temp/
+api/scripts/temp/
+temp_*.py
+temp_*.js
+*_temp.*
+*_temporary.*
+analysis_*.py
+check_*.py
+test_*.py
+debug_*.py
+query_*.py
 logs/
 npm-debug.log*
 yarn-debug.log*

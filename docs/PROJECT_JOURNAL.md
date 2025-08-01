@@ -44,4 +44,24 @@
 3. Consider Hibernate auto-DDL configuration vs manual schema updates
 4. Complete Spring Boot application startup testing
 
+### Future Feature Roadmap
+
+**Preconstructed Product Integration** (High Priority Future Feature):
+- Auto-import feature for preconstructed products (Commander precons, starter decks, etc.)
+- One-click addition of complete product to collection and deck list
+- Support across all TCG games with product-specific handling
+- Integration with product databases and pricing information
+
+**Deck Building States: "Planned vs Planted Garden"** (Core Deck Builder Feature):
+- **Planned Decks** (Unbuilt): Theoretical decklists, wishlists, brewing concepts
+  - No inventory checking required
+  - Can exceed collection limits
+  - Focus on deck optimization and theory
+- **Planted Decks** (Built): Physical decks using actual owned cards
+  - Real-time inventory validation against collection
+  - Card borrowing/allocation system between decks
+  - Prevents double-allocation of single cards
+  - "Missing cards" alerts for incomplete builds
+  - Integration with collection management for deck assembly
+
 ---

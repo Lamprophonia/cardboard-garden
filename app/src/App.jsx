@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Footer from './components/Footer'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -166,6 +167,7 @@ function App() {
           })}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
