@@ -1,0 +1,15 @@
+/* === CARDBOARD GARDEN DASHBOARD STYLES === */
+
+/* 
+This file serves as documentation for the modular dashboard styles.
+The actual styles are now imported directly in App.jsx for better Vite compatibility:
+
+- layout/grid.css: Main layout structure and content areas
+- components/header.css: Header component and search functionality
+- components/sidebar.css: Navigation sidebar and auth prompts  
+- components/right-panel.css: Right panel stats, activity, and actions
+- layout/responsive.css: All responsive breakpoints and mobile styles
+
+This approach maintains modularity while ensuring reliable CSS loading.
+Each component has its own dedicated CSS file for better maintainability.
+*/

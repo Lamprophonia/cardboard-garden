@@ -1,0 +1,72 @@
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1200px) {
+  .layout-container {
+    grid-template-columns: 240px 1fr 280px;
+  }
+  
+  .header-container {
+    grid-template-columns: 240px 1fr 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .layout-container {
+    grid-template-columns: 200px 1fr 240px;
+  }
+  
+  .header-container {
+    grid-template-columns: 200px 1fr 240px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+  }
+  
+  .header-container {
+    grid-template-columns: 1fr;
+    padding: 0 var(--cg-space-4);
+  }
+  
+  .header-left,
+  .header-right {
+    border: none;
+  }
+  
+  .header-center {
+    display: none;
+  }
+  
+  .app-sidebar,
+  .right-panel {
+    display: none;
+  }
+  
+  .content-wrapper {
+    padding: var(--cg-space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 var(--cg-space-2);
+  }
+  
+  .brand-text {
+    display: none;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .content-wrapper {
+    padding: var(--cg-space-2);
+  }
+}

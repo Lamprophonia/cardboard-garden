@@ -1,0 +1,126 @@
+/* === SIDEBAR COMPONENT === */
+.app-sidebar {
+  grid-area: sidebar;
+  background: white;
+  border-right: 1px solid var(--cg-neutral-200);
+  padding: var(--cg-space-6) 0;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.sidebar-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-section {
+  margin-bottom: var(--cg-space-8);
+}
+
+.nav-section-title {
+  padding: 0 var(--cg-space-6) var(--cg-space-3);
+  font-size: var(--cg-text-xs);
+  font-weight: var(--cg-font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cg-neutral-500);
+  margin: 0;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-bottom: var(--cg-space-1);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--cg-space-3);
+  padding: var(--cg-space-3) var(--cg-space-6);
+  color: var(--cg-neutral-600);
+  text-decoration: none;
+  font-weight: var(--cg-font-medium);
+  font-size: var(--cg-text-sm);
+  transition: var(--cg-transition-base);
+  position: relative;
+}
+
+.nav-link:hover {
+  background: var(--cg-neutral-100);
+  color: var(--cg-neutral-800);
+}
+
+.nav-link.active {
+  background: rgba(45, 80, 22, 0.1);
+  color: var(--cg-primary-green);
+  font-weight: var(--cg-font-semibold);
+}
+
+.nav-link.locked {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.nav-link.locked:hover {
+  background: var(--cg-neutral-50);
+  opacity: 0.8;
+}
+
+.nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--cg-primary-green);
+}
+
+.nav-icon {
+  font-size: var(--cg-text-base);
+  width: 20px;
+  text-align: center;
+}
+
+.nav-label {
+  flex: 1;
+}
+
+.lock-icon {
+  font-size: var(--cg-text-xs);
+  opacity: 0.7;
+  margin-left: auto;
+}
+
+.sidebar-auth {
+  margin-top: auto;
+  padding: 0 var(--cg-space-6);
+}
+
+.auth-prompt {
+  background: var(--cg-neutral-100);
+  border: 1px solid var(--cg-neutral-200);
+  border-radius: var(--cg-radius-lg);
+  padding: var(--cg-space-4);
+  text-align: center;
+}
+
+.auth-prompt h4 {
+  font-size: var(--cg-text-sm);
+  font-weight: var(--cg-font-bold);
+  color: var(--cg-neutral-800);
+  margin: 0 0 var(--cg-space-2) 0;
+}
+
+.auth-prompt p {
+  font-size: var(--cg-text-xs);
+  color: var(--cg-neutral-600);
+  margin: 0 0 var(--cg-space-4) 0;
+  line-height: 1.4;
+}

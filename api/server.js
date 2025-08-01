@@ -60,6 +60,88 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
+// Database setup endpoint (development only)
+app.post('/api/setup/user-tables', async (req, res) => {
+  try {
+    // Create users table
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        last_login TIMESTAMP NULL,
+        is_active BOOLEAN DEFAULT FALSE,
+        email_verified BOOLEAN DEFAULT FALSE,
+        email_verification_token VARCHAR(255) NULL,
+        email_verification_expires TIMESTAMP NULL,
+        password_reset_token VARCHAR(255) NULL,
+        password_reset_expires TIMESTAMP NULL,
+        
+        INDEX idx_username (username),
+        INDEX idx_email (email),
+        INDEX idx_created_at (created_at),
+        INDEX idx_email_verification_token (email_verification_token),
+        INDEX idx_password_reset_token (password_reset_token)
+      )
+    `);
+
+    // Create user_sessions table
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS user_sessions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        session_token VARCHAR(255) UNIQUE NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        expires_at TIMESTAMP NOT NULL,
+        ip_address VARCHAR(45) NULL,
+        user_agent TEXT NULL,
+        
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        INDEX idx_session_token (session_token),
+        INDEX idx_user_id (user_id),
+        INDEX idx_expires_at (expires_at)
+      )
+    `);
+
+    // Create user_collections table
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS user_collections (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        card_id VARCHAR(50) NOT NULL,
+        quantity INT DEFAULT 1 NOT NULL,
+        condition_grade ENUM('mint', 'near_mint', 'excellent', 'good', 'light_played', 'played', 'poor') DEFAULT 'near_mint',
+        foil BOOLEAN DEFAULT FALSE,
+        language VARCHAR(10) DEFAULT 'en',
+        added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        notes TEXT NULL,
+        
+        UNIQUE KEY unique_user_card (user_id, card_id, condition_grade, foil, language),
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        INDEX idx_user_id (user_id),
+        INDEX idx_card_id (card_id),
+        INDEX idx_added_at (added_at)
+      )
+    `);
+
+    res.json({
+      success: true,
+      message: 'User authentication tables created successfully',
+      tables: ['users', 'user_sessions', 'user_collections']
+    });
+  } catch (error) {
+    console.error('Database setup error:', error);
+    res.status(500).json({
+      error: 'Failed to create user tables',
+      message: error.message
+    });
+  }
+});
+
 // Authentication routes
 app.post('/api/auth/register', async (req, res) => {
   try {
