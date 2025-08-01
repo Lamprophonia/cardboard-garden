@@ -1,0 +1,21 @@
+{
+  "name": "cardboard-garden",
+  "version": "1.0.0",
+  "description": "Magic: The Gathering collection manager",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\"",
+    "dev:api": "cd api && cross-env PORT=3001 nodemon server.js",
+    "dev:frontend": "cd app && npm run dev",
+    "start": "pm2 start config/development/ecosystem.config.js",
+    "stop": "pm2 stop config/development/ecosystem.config.js",
+    "restart": "pm2 restart config/development/ecosystem.config.js",
+    "logs": "pm2 logs",
+    "status": "pm2 status",
+    "dev:powershell": "powershell -ExecutionPolicy Bypass -File ./scripts/development/start-dev.ps1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.0.3"
+  }
+}

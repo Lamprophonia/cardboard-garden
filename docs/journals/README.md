@@ -1,59 +1,27 @@
-# Cardboard Garden - Journal Archive
+# Development Journals
 
-This directory contains detailed development journals organized by project phases.
+This directory contains detailed development session journals and planning documents for the Cardboard Garden project.
 
-## **Journal Organization**
+## Current Journals
 
-### **Master Journal**
-- **[../PROJECT_JOURNAL.md](../PROJECT_JOURNAL.md)** - Current phase overview and project summary
+### Active Development Sessions
+- `DEV_SESSION_2025_07_31.md` - Maven configuration resolution and Spring Boot startup progress
 
-### **Phase Journals** (Detailed Development History)
+### Planning & Architecture Documents
+- `PHASE1_DATABASE_ARCHITECTURE.md` - Database design and architecture planning
+- `COLLECTION_MANAGEMENT_CONCEPTS.md` - Card collection management system concepts
+- `COLLECTION_DECK_INTEGRATION.md` - Integration between collections and deck building
+- `DECK_BUILDING_INTEGRATION.md` - Deck building system integration planning
 
-| Phase | Period | Focus | Status | Journal File |
-|-------|--------|-------|--------|--------------|
-| **Phase 1** | July 2025 | Database Architecture | ✅ Complete | [PHASE1_DATABASE_ARCHITECTURE.md](PHASE1_DATABASE_ARCHITECTURE.md) |
-| **Phase 2** | Future | API Development | 📋 Planned | `PHASE2_API_DEVELOPMENT.md` |
-| **Phase 3** | Future | Frontend/UI | 📋 Planned | `PHASE3_FRONTEND_UI.md` |
-| **Phase 4** | Future | Deployment & Production | 📋 Planned | `PHASE4_DEPLOYMENT.md` |
+## Journal Format
+Each development session should include:
+- Session overview and objectives
+- Technical context and environment
+- Issues encountered and resolutions
+- Progress made and outcomes
+- Next steps and priorities
 
-## **When to Create New Phase Journals**
-
-### **Start a new phase journal when:**
-- Beginning a major new development area (API, Frontend, etc.)
-- Current journal exceeds ~400 lines
-- Focus shifts to entirely different technical domain
-- Major architectural decisions need dedicated space
-
-### **Journal Naming Convention:**
-- `PHASE{N}_{FOCUS_AREA}.md`
-- Use UPPERCASE for consistency
-- Keep phase numbers sequential
-- Use descriptive focus area names
-
-## **Master Journal Management**
-
-The main `PROJECT_JOURNAL.md` should:
-- ✅ Contain project overview and current status
-- ✅ Link to detailed phase journals
-- ✅ Track overall project metrics
-- ✅ Maintain recent updates section (last 2-3 phases)
-- ✅ Archive older detailed entries to phase journals
-
-## **Cross-Journal References**
-
-Use relative links to reference between journals:
-```markdown
-See [Phase 1 Database Decisions](journals/PHASE1_DATABASE_ARCHITECTURE.md#technical-decisions-made)
-```
-
-## **Benefits of This Approach**
-
-1. **📚 Organized History**: Each phase has dedicated detailed documentation
-2. **🔍 Easy Navigation**: Master journal provides quick overview
-3. **📈 Scalable**: Can handle years of development without becoming unwieldy
-4. **👥 Team Friendly**: New team members can focus on relevant phases
-5. **📊 Portfolio Ready**: Each phase journal showcases specific skills
-
----
-
-*This archive structure was established on July 30, 2025 during Phase 1 completion.*
+## Usage
+- Create new journal entries for significant development sessions
+- Update existing journals when continuing work on specific topics
+- Reference journal entries in commit messages for historical context

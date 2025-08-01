@@ -1,0 +1,14 @@
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\config\JwtAuthenticationFilter.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\config\JwtAuthenticationEntryPoint.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\service\EmailService.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\repository\UserRepository.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\dto\LoginRequest.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\dto\RegisterRequest.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\service\AuthService.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\controller\CardController.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\controller\AuthController.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\config\SecurityConfig.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\entity\User.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\CardboardGardenApiApplication.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\repository\CardRepository.java
+C:\Users\brian\Projects\cardboard-garden\api-java\src\main\java\com\cardboardgarden\entity\Card.java

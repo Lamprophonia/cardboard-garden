@@ -45,7 +45,7 @@ mysql -u tcg_app -p
 
 **🎯 Ready to cultivate your card collection garden across multiple TCG universes!**
 
-📖 [**Docker Guide**](docker/README.md) | 🛠️ [**Manual Setup**](sql/GETTING_STARTED.md) | 🔍 [**SonarQube Setup**](docker/sonarqube/README.md) | 📁 [**Project Structure**](PROJECT_STRUCTURE.md) | 🎨 [**Brand Assets**](docs/BRAND_ASSETS.md)
+️ [**Manual Setup**](sql/GETTING_STARTED.md) | 🎨 [**Brand Assets**](docs/project/BRAND_ASSETS.md) | � [**Documentation**](docs/README.md)
 
 ---
 

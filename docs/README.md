@@ -10,7 +10,6 @@ Welcome to the comprehensive documentation for **Cardboard Garden** - your multi
 - [**Manual Setup**](../sql/GETTING_STARTED.md) - Traditional database installation
 
 ### **🏗️ Architecture & Design**
-- [**Project Structure**](../PROJECT_STRUCTURE.md) - File organization overview
 - [**Future Proofing Analysis**](FUTURE_PROOFING_ANALYSIS.md) - Scalability and extensibility
 - [**Hybrid Database Architecture**](../sql/HYBRID_README.md) - Database design decisions
 

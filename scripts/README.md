@@ -1,6 +1,89 @@
-# Development Scripts Usage Guide
+# Cardboard Garden Development Scripts
 
-## 🚀 **Quick Commands**
+This folder contains all development and utility scripts for the Cardboard Garden project.
+
+## 🚀 **Quick Start (Recommended)**
+
+### PowerShell (Windows) - Primary Method
+```powershell
+# From project root - starts both API and frontend
+.\scripts\development\start-dev.ps1
+
+# Check status
+Get-Job
+
+# View logs
+Receive-Job -Name CardboardAPI -Keep
+Receive-Job -Name CardboardFrontend -Keep
+
+# Stop services
+.\scripts\development\stop-services.ps1
+```
+
+## 📁 **Script Organization**
+
+### **Development Scripts** (`development/`)
+- `start-dev.ps1` - ⭐ Primary development script (PowerShell background jobs)
+- `stop-services.ps1` - Stop all development services
+
+### **Database Scripts** (`database/`)
+- *Future database management scripts*
+
+### **Utility Scripts** (`utilities/`)
+- *Future utility and maintenance scripts*
+
+### **Legacy Batch Scripts** (root level)
+- `start-dev.bat` & `stop-dev.bat` - Simple CMD window approach
+
+#### `dev.bat` & `dev.sh`
+Legacy development scripts for database and SonarQube management.
+
+## 🌐 **Service URLs**
+
+- **API Server:** http://localhost:3001
+  - Health check: http://localhost:3001/api/health
+  - Card search: http://localhost:3001/api/cards/search
+  - Collection: http://localhost:3001/api/collection
+- **Frontend:** http://localhost:5173
+
+## 📋 **Requirements**
+
+- Node.js installed
+- Global packages: `nodemon` (`npm install -g nodemon`)
+- MySQL database running
+- Dependencies installed:
+  ```bash
+  cd api && npm install
+  cd ../app && npm install
+  ```
+
+## 🔧 **Management Commands**
+
+```powershell
+# Service Status
+Get-Job                                    # List all background jobs
+Get-Job | Where-Object {$_.State -eq "Running"}  # Show only running jobs
+
+# View Logs
+Receive-Job -Name CardboardAPI -Keep       # API server logs
+Receive-Job -Name CardboardFrontend -Keep  # Frontend logs
+
+# Restart Individual Services
+Get-Job -Name CardboardAPI | Stop-Job     # Stop API only
+# Then run start-dev.ps1 again
+
+# Complete Cleanup
+.\scripts\stop-services.ps1               # Graceful stop
+taskkill /f /im node.exe                  # Force kill if needed
+```
+
+## 📝 **Legacy Scripts Documentation**
+
+For database setup and SonarQube management, see the bottom section of this file.
+
+---
+
+## 🗃️ **Legacy Database & SonarQube Scripts**
 
 ### **Windows Users**
 ```cmd
@@ -12,80 +95,18 @@ scripts\dev.bat start-all
 
 # Start SonarQube for code analysis
 scripts\dev.bat sonar
-
-# Connect to MySQL command line
-scripts\dev.bat mysql
-
-# Create database backup
-scripts\dev.bat backup
-
-# Show service status
-scripts\dev.bat status
-
-# Stop all services
-scripts\dev.bat stop
 ```
 
-### **Unix/Linux/macOS Users**
+### **Linux/macOS Users**
 ```bash
 # Start database services
-scripts/dev.sh start-db
+./scripts/dev.sh start-db
 
 # Start all services including SonarQube
-scripts/dev.sh start-all
+./scripts/dev.sh start-all
 
 # Start SonarQube for code analysis
-scripts/dev.sh sonar
-
-# Connect to MySQL command line
-scripts/dev.sh mysql
-
-# Create database backup
-scripts/dev.sh backup
-
-# Show service status
-scripts/dev.sh status
-
-# Stop all services
-scripts/dev.sh stop
+./scripts/dev.sh sonar
 ```
 
-## 🔧 **Advanced Commands**
-
-### **Database Management**
-```bash
-# Reset database (⚠️ DELETES ALL DATA)
-scripts/dev.sh reset-db
-
-# Restore from backup
-scripts/dev.sh restore backups/tcg_backup_20240730_120000.sql
-
-# View logs
-scripts/dev.sh logs mysql
-scripts/dev.sh logs sonarqube
-```
-
-### **Development Workflow**
-```bash
-# 1. Start development environment
-scripts/dev.sh start-all
-
-# 2. Verify services are running
-scripts/dev.sh status
-
-# 3. Open web interfaces
-# Database: http://localhost:8080
-# Code Quality: http://localhost:9000
-
-# 4. When done, stop services
-scripts/dev.sh stop
-```
-
-## 📝 **Script Locations**
-
-- **Windows**: `scripts/dev.bat`
-- **Unix/Linux**: `scripts/dev.sh`
-- **Configuration**: `config/` folder
-- **Docker Setup**: `docker/` folder
-
-The scripts automatically handle Docker containers, wait for services to be ready, and provide helpful status messages! 🎉
+For detailed legacy documentation, see the original README sections below.

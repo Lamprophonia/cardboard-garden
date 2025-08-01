@@ -1,47 +1,12 @@
-# Application Layer
+# React + Vite
 
-This directory is reserved for the future application layer development.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Planned Structure
+Currently, two official plugins are available:
 
-```
-app/
-├── api/                    # REST API server
-│   ├── controllers/        # Route controllers
-│   ├── middleware/         # Authentication, validation
-│   ├── models/            # Database models/ORM
-│   └── routes/            # API route definitions
-├── web/                   # Web application
-│   ├── src/               # Source code
-│   ├── public/            # Static assets
-│   └── components/        # UI components
-├── mobile/                # Mobile applications
-│   ├── ios/               # iOS app
-│   └── android/           # Android app
-└── shared/                # Shared utilities
-    ├── types/             # TypeScript types
-    ├── constants/         # Shared constants
-    └── utils/             # Helper functions
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Next Development Phase
+## Expanding the ESLint configuration
 
-The application layer will be built after the database layer is deployed and tested. Key features will include:
-
-- **User authentication and authorization**
-- **Collection management interface**
-- **Card search and filtering**
-- **Wishlist management**
-- **Market price tracking**
-- **Cross-game collection analytics**
-
-## Technology Stack (Planned)
-
-- **Backend**: Node.js with Express or Fastify
-- **Database**: MySQL with existing hybrid schema
-- **Authentication**: JWT with refresh tokens
-- **API**: RESTful with OpenAPI documentation
-- **Frontend**: React or Vue.js with TypeScript
-- **Mobile**: React Native or Flutter
-- **Testing**: Jest, Cypress for E2E testing
-- **Deployment**: Docker containers
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
