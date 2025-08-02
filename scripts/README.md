@@ -42,7 +42,7 @@ Receive-Job -Name CardboardFrontend -Keep
 - `start-dev.bat` & `stop-dev.bat` - Simple CMD window approach
 
 #### `dev.bat` & `dev.sh`
-Legacy development scripts for database and SonarQube management.
+Legacy development scripts for database management.
 
 ## 🌐 **Service URLs**
 
@@ -85,22 +85,16 @@ taskkill /f /im node.exe                  # Force kill if needed
 
 ## 📝 **Legacy Scripts Documentation**
 
-For database setup and SonarQube management, see the bottom section of this file.
+For database setup, see the bottom section of this file.
 
 ---
 
-## 🗃️ **Legacy Database & SonarQube Scripts**
+## 🗃️ **Legacy Database Scripts**
 
 ### **Windows Users**
 ```cmd
 # Start database services
 scripts\dev.bat start-db
-
-# Start all services including SonarQube
-scripts\dev.bat start-all
-
-# Start SonarQube for code analysis
-scripts\dev.bat sonar
 ```
 
 ## 🧹 **Maintenance Commands**
@@ -121,12 +115,6 @@ python scripts\cleanup-temp.py --execute
 ```bash
 # Start database services
 ./scripts/dev.sh start-db
-
-# Start all services including SonarQube
-./scripts/dev.sh start-all
-
-# Start SonarQube for code analysis
-./scripts/dev.sh sonar
 ```
 
 For detailed legacy documentation, see the original README sections below.

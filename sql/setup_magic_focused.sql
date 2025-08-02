@@ -34,6 +34,6 @@ SOURCE 07_sample_data_and_tests.sql;
 
 SELECT '🌱 Cardboard Garden (Magic Focus) setup completed successfully!' AS message;
 SELECT 'Databases: tcg_shared, tcg_magic' AS databases_created;
-SELECT 'Users: tcg_app, tcg_readonly, tcg_backup, sonar_user' AS users_created;
+SELECT 'Users: tcg_app, tcg_readonly, tcg_backup' AS users_created;
 SELECT 'Scryfall API integration ready' AS api_integration;
 SELECT '⚠️  REMEMBER: Change default passwords before production use!' AS security_reminder;

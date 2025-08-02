@@ -11,11 +11,6 @@ config/.env
 docker-compose.override.yml
 .docker/
 
-# SonarQube analysis files
-.sonarqube/
-.scannerwork/
-config/sonar-project.properties.bak
-
 # Database dumps and backups
 *.sql.backup
 *.dump
@@ -48,6 +43,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Local development files
+.maintenance-prompts.md
 
 # Temporary scripts and analysis files
 scripts/temp/

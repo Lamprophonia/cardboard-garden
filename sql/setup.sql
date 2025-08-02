@@ -35,6 +35,6 @@ SOURCE 09_backup_monitoring.sql;
 
 SELECT '🌱 Cardboard Garden setup completed successfully!' AS message;
 SELECT 'Databases: tcg_shared, tcg_pokemon, tcg_magic, tcg_yugioh, tcg_lorcana' AS databases_created;
-SELECT 'Users: tcg_app, tcg_readonly, tcg_backup, sonar_user' AS users_created;
+SELECT 'Users: tcg_app, tcg_readonly, tcg_backup' AS users_created;
 SELECT 'Sample data and test queries added for all games' AS sample_data;
 SELECT '⚠️  REMEMBER: Change default passwords before production use!' AS security_reminder;

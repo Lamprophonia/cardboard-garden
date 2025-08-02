@@ -18,13 +18,6 @@ CREATE USER IF NOT EXISTS 'tcg_readonly'@'%' IDENTIFIED BY 'readonly_password';
 -- Create backup user with minimal required permissions
 CREATE USER IF NOT EXISTS 'tcg_backup'@'localhost' IDENTIFIED BY 'backup_password';
 
--- Create SonarQube user for code analysis database
-CREATE USER IF NOT EXISTS 'sonar_user'@'localhost' IDENTIFIED BY 'sonar_password_2024';
-CREATE USER IF NOT EXISTS 'sonar_user'@'%' IDENTIFIED BY 'sonar_password_2024';
-
--- Create SonarQube database
-CREATE DATABASE IF NOT EXISTS sonarqube CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- =============================================================================
 -- GRANT PERMISSIONS TO APPLICATION USER
 -- =============================================================================
@@ -80,18 +73,6 @@ GRANT SELECT, LOCK TABLES ON tcg_pokemon.* TO 'tcg_backup'@'localhost';
 GRANT SELECT, LOCK TABLES ON tcg_magic.* TO 'tcg_backup'@'localhost';
 GRANT SELECT, LOCK TABLES ON tcg_yugioh.* TO 'tcg_backup'@'localhost';
 GRANT SELECT, LOCK TABLES ON tcg_lorcana.* TO 'tcg_backup'@'localhost';
-
--- =============================================================================
--- GRANT PERMISSIONS TO SONARQUBE USER
--- =============================================================================
-
--- SonarQube needs full access to its own database
-GRANT ALL PRIVILEGES ON sonarqube.* TO 'sonar_user'@'localhost';
-GRANT ALL PRIVILEGES ON sonarqube.* TO 'sonar_user'@'%';
-
--- Optional: Grant read access to TCG databases for custom analysis rules
-GRANT SELECT ON tcg_shared.* TO 'sonar_user'@'localhost';
-GRANT SELECT ON tcg_shared.* TO 'sonar_user'@'%';
 
 -- =============================================================================
 -- FLUSH PRIVILEGES

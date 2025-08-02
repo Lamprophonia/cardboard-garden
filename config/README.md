@@ -6,9 +6,6 @@
 - **`.env.example`** - Template for environment variables
 - **`.env`** - Your local environment (create from example, not in git)
 
-### **🔍 SonarQube Configuration**
-- **`sonar-project.properties`** - SonarQube analysis settings
-
 ## 🚀 **Setup Instructions**
 
 ### **1. Environment Variables**
@@ -20,14 +17,7 @@ cp config/.env.example .env
 nano .env  # or edit with your preferred editor
 ```
 
-### **2. SonarQube Configuration**
-The `sonar-project.properties` file is pre-configured for your TCG project:
-- Analyzes SQL, JavaScript, TypeScript, and Markdown files
-- Excludes node_modules and build directories
-- Configured for MySQL dialect
-- Links to your GitHub repository
-
-### **3. Custom MySQL Configuration**
+### **2. Custom MySQL Configuration**
 Add custom MySQL settings:
 ```bash
 # Create custom MySQL config
