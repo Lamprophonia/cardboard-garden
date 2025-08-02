@@ -1,13 +1,29 @@
--- User Authentication System
--- This file sets up user accounts and authentication for the Cardboard Garden
+-- User Authentication System Schema
+-- Cardboard Garden - Secure user management with email verification
 
--- Create users table
+-- Users table
 CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    
+    -- Basic user information
+    email VARCHAR(255) NOT NULL UNIQUE,
+    username VARCHAR(30) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    
+    -- Email verification
+    email_verified BOOLEAN DEFAULT FALSE,
+    email_verification_token VARCHAR(64) NULL,
+    email_verification_expires DATETIME NULL,
+    email_verified_at DATETIME NULL,
+    
+    -- Account management
+    active BOOLEAN DEFAULT TRUE,
+    last_login_at DATETIME NULL,
+    
+    -- Timestamps
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     last_login TIMESTAMP NULL,
     is_active BOOLEAN DEFAULT FALSE,  -- Start inactive until email verified
