@@ -1,8 +1,8 @@
 /* === SIDEBAR COMPONENT === */
 .app-sidebar {
   grid-area: sidebar;
-  background: white;
-  border-right: 1px solid var(--cg-neutral-200);
+  background: var(--cg-neutral-200);
+  border-right: 1px solid var(--cg-neutral-300);
   padding: var(--cg-space-6) 0;
   overflow-y: auto;
   height: 100%;
@@ -52,7 +52,7 @@
 }
 
 .nav-link:hover {
-  background: var(--cg-neutral-100);
+  background: var(--cg-neutral-300);
   color: var(--cg-neutral-800);
 }
 

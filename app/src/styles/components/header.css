@@ -1,8 +1,8 @@
 /* === HEADER COMPONENT === */
 .app-header {
   grid-area: header;
-  background: white;
-  border-bottom: 1px solid var(--cg-neutral-200);
+  background: var(--cg-neutral-200);
+  border-bottom: 1px solid var(--cg-neutral-300);
   box-shadow: var(--cg-shadow-sm);
   position: relative;
   top: 0;
@@ -85,7 +85,7 @@
   height: 40px;
   padding: 0 var(--cg-space-4);
   background: var(--cg-primary-green);
-  color: white;
+  color: var(--cg-neutral-100);
   border: none;
   border-radius: 0 var(--cg-radius-md) var(--cg-radius-md) 0;
   cursor: pointer;

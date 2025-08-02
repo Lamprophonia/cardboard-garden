@@ -185,8 +185,8 @@ p {
 }
 
 .cg-card {
-  background: white;
-  border: 1px solid var(--cg-neutral-200);
+  background: var(--cg-neutral-200);
+  border: 1px solid var(--cg-neutral-300);
   border-radius: var(--cg-radius-lg);
   padding: var(--cg-space-6);
   box-shadow: var(--cg-shadow-md);
@@ -215,7 +215,7 @@ p {
 
 .cg-btn-primary {
   background-color: var(--cg-primary-green);
-  color: white;
+  color: var(--cg-neutral-100);
 }
 
 .cg-btn-primary:hover {
@@ -223,14 +223,14 @@ p {
 }
 
 .cg-btn-secondary {
-  background-color: white;
+  background-color: var(--cg-neutral-200);
   color: var(--cg-primary-green);
   border: 1px solid var(--cg-primary-green);
 }
 
 .cg-btn-secondary:hover {
   background-color: var(--cg-primary-green);
-  color: white;
+  color: var(--cg-neutral-100);
 }
 
 .cg-input {
@@ -240,6 +240,8 @@ p {
   border-radius: var(--cg-radius-md);
   font-size: var(--cg-text-base);
   min-height: 2.75rem;
+  background: var(--cg-neutral-100);
+  color: var(--cg-neutral-800);
   transition: var(--cg-transition-base);
 }
 

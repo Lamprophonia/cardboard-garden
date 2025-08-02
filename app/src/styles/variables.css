@@ -1,5 +1,5 @@
 /* Cardboard Garden Design System Variables */
-/* Based on Digital Garden Cultivation theme */
+/* DARK THEME DEFAULT - Based on Digital Garden Cultivation theme */
 
 /* === FONT IMPORTS === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -11,32 +11,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* === PRIMARY COLORS === */
-  --cg-primary-green: #2D5016;     /* Forest Green - Primary brand */
-  --cg-primary-light: #4A7C2A;     /* Sage Green - Hover states */
-  --cg-primary-dark: #1A3009;      /* Deep Forest - Active states */
+  /* === PRIMARY COLORS (Enhanced for dark theme) === */
+  --cg-primary-green: #4A7C2A;     /* Brighter Forest Green - Primary brand */
+  --cg-primary-light: #5B8B36;     /* Lighter Sage Green - Hover states */
+  --cg-primary-dark: #2D5016;      /* Deep Forest - Active states */
 
-  /* === SECONDARY COLORS === */
-  --cg-secondary-brown: #8B4513;   /* Earthy Brown - Wood/cardboard */
-  --cg-secondary-gold: #B8860B;    /* Harvest Gold - Accent/premium */
-  --cg-accent-blue: #4682B4;       /* Steel Blue - Card backs */
+  /* === SECONDARY COLORS (Enhanced for dark theme) === */
+  --cg-secondary-brown: #A0693F;   /* Lighter Earthy Brown - Wood/cardboard */
+  --cg-secondary-gold: #D4AC0D;    /* Brighter Harvest Gold - Accent/premium */
+  --cg-accent-blue: #5499C7;       /* Lighter Steel Blue - Card backs */
 
-  /* === NEUTRAL COLORS === */
-  --cg-neutral-100: #F8F9FA;       /* Light backgrounds */
-  --cg-neutral-200: #E9ECEF;       /* Subtle borders */
-  --cg-neutral-300: #DEE2E6;       /* Input borders */
-  --cg-neutral-400: #CED4DA;       /* Disabled states */
-  --cg-neutral-500: #6C757D;       /* Muted text */
-  --cg-neutral-600: #495057;       /* Secondary text */
-  --cg-neutral-700: #343A40;       /* Primary text */
-  --cg-neutral-800: #212529;       /* Headers */
-  --cg-neutral-900: #000000;       /* High contrast */
+  /* === NEUTRAL COLORS (Dark theme default) === */
+  --cg-neutral-100: #1A1A1A;       /* Dark backgrounds */
+  --cg-neutral-200: #2D2D2D;       /* Subtle borders */
+  --cg-neutral-300: #404040;       /* Input borders */
+  --cg-neutral-400: #525252;       /* Disabled states */
+  --cg-neutral-500: #9CA3AF;       /* Muted text */
+  --cg-neutral-600: #D1D5DB;       /* Secondary text */
+  --cg-neutral-700: #E5E7EB;       /* Primary text */
+  --cg-neutral-800: #F3F4F6;       /* Headers */
+  --cg-neutral-900: #FFFFFF;       /* High contrast */
 
-  /* === SEMANTIC COLORS === */
-  --cg-success: #28A745;           /* Success states */
-  --cg-warning: #FFC107;           /* Warning states */
-  --cg-danger: #DC3545;            /* Error states */
-  --cg-info: #17A2B8;              /* Info states */
+  /* === SEMANTIC COLORS (Dark theme optimized) === */
+  --cg-success: #10B981;           /* Success states - brighter green */
+  --cg-warning: #F59E0B;           /* Warning states - brighter amber */
+  --cg-danger: #EF4444;            /* Error states - brighter red */
+  --cg-info: #3B82F6;              /* Info states - brighter blue */
 
   /* === GAME-SPECIFIC COLORS === */
   --cg-pokemon-red: #FF6B6B;       /* Pokemon theme */
@@ -48,7 +48,7 @@
   /* Primary font stack - Qilka for all text with Inter fallback */
   --cg-font-primary: 'Qilka', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --cg-font-heading: 'Qilka', 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --cg-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --cg-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
 
   /* Font Sizes (Fluid Typography) */
   --cg-text-xs: clamp(0.75rem, 0.5vw + 0.7rem, 0.8rem);
@@ -116,4 +116,35 @@
   --cg-z-modal: 1050;
   --cg-z-popover: 1060;
   --cg-z-tooltip: 1070;
+}
+
+/* === LIGHT THEME VARIANT === */
+/* Add [data-theme="light"] to body element to use light theme */
+[data-theme="light"] {
+  /* Primary Colors - Darker for light backgrounds */
+  --cg-primary-green: #2D5016;     /* Original dark forest green */
+  --cg-primary-light: #4A7C2A;     /* Sage green hover */
+  --cg-primary-dark: #1A3009;      /* Deep forest active */
+
+  /* Secondary Colors - Original darker versions */
+  --cg-secondary-brown: #8B4513;   /* Earthy Brown */
+  --cg-secondary-gold: #B8860B;    /* Harvest Gold */
+  --cg-accent-blue: #4682B4;       /* Steel Blue */
+
+  /* Neutral Colors - Light theme */
+  --cg-neutral-100: #F8F9FA;       /* Light backgrounds */
+  --cg-neutral-200: #E9ECEF;       /* Subtle borders */
+  --cg-neutral-300: #DEE2E6;       /* Input borders */
+  --cg-neutral-400: #CED4DA;       /* Disabled states */
+  --cg-neutral-500: #6C757D;       /* Muted text */
+  --cg-neutral-600: #495057;       /* Secondary text */
+  --cg-neutral-700: #343A40;       /* Primary text */
+  --cg-neutral-800: #212529;       /* Headers */
+  --cg-neutral-900: #000000;       /* High contrast */
+
+  /* Semantic Colors - Original versions for light theme */
+  --cg-success: #28A745;           /* Success states */
+  --cg-warning: #FFC107;           /* Warning states */
+  --cg-danger: #DC3545;            /* Error states */
+  --cg-info: #17A2B8;              /* Info states */
 }
