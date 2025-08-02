@@ -1,0 +1,65 @@
+/* === THEME TRANSITION STYLES === */
+
+/* Smooth theme transitions */
+* {
+  transition: 
+    background-color var(--cg-transition-base),
+    border-color var(--cg-transition-base),
+    color var(--cg-transition-base),
+    box-shadow var(--cg-transition-base);
+}
+
+/* Exclude specific elements from transitions to avoid issues */
+*:focus,
+*:hover,
+.theme-toggle-btn,
+.btn,
+input,
+textarea,
+select {
+  transition: 
+    background-color var(--cg-transition-base),
+    border-color var(--cg-transition-base),
+    color var(--cg-transition-base),
+    box-shadow var(--cg-transition-base),
+    transform var(--cg-transition-base);
+}
+
+/* Theme-specific body styles */
+body {
+  transition: background-color var(--cg-transition-base);
+}
+
+/* Ensure proper contrast for all themes */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* High contrast theme enhancements */
+[data-theme="high-contrast"] {
+  color-scheme: dark;
+  --cg-border-width: 2px;
+}
+
+[data-theme="high-contrast"] .btn,
+[data-theme="high-contrast"] .cg-input,
+[data-theme="high-contrast"] .magic-card {
+  border-width: var(--cg-border-width);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* Focus indicators for accessibility */
+[data-theme="high-contrast"] *:focus {
+  outline: 3px solid var(--cg-primary-green);
+  outline-offset: 2px;
+}

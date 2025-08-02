@@ -98,22 +98,97 @@
 
 ### Future Feature Roadmap
 
+## 🎉 **MILESTONE: Complete Theme System Implementation** (August 1, 2025)
+- ✅ Professional light/dark theme switching with CSS variables and smooth transitions
+- ✅ Fixed all hardcoded white backgrounds across components (main content, sidebar, footer)  
+- ✅ ThemeProvider context with localStorage persistence and system preference detection
+- ✅ Streamlined to two themes (Light/Dark) removing unnecessary high contrast option
+- ✅ Optimal button sizing preventing text wrapping and layout issues
+- **Future Architecture**: Theme toggle migration from header to user settings (authenticated users only)
+
+## 🏠 **Core Collection System: "Bookshelf Metaphor"** (Primary Development Focus)
+
+### **Collection Hierarchy Architecture**
+**🏠 Bookshelves** (TCG-Specific Organization):
+- Separate collections for each trading card game (Magic, Pokemon, Yu-Gi-Oh, etc.)
+- Visual bookshelf representation with customizable aesthetics
+- Multi-game support building on existing Magic foundation (108,809+ cards)
+
+**📖 Binders** (Rich Detail & Customization):
+- Detailed card information with visual binder interface
+- Flexible organization: by set (default), custom splits, or user preference
+- Example: Single Aetherdrift binder vs separate Commander/Variants binders
+- **Check-out System**: Cards can be removed and replaced with proxy markers
+- Proxy cards reference which deck currently contains the physical card
+- Prevents accidental double-allocation of single cards
+
+**📦 Bulk Boxes** (Minimal Data, Maximum Search):
+- Simplified storage for large quantities of common cards
+- Focus on essential data: name, quantity, basic search metadata
+- Robust search functionality for quick bulk card lookups
+- Mirrors real-life bulk collection management
+
+**🎒 Bags** (Format-Specific Organization):
+- Represents different play formats (Standard, Commander, Vintage, etc.)
+- Optional deck containers - decks can exist independently on "shelf"
+- Visual metaphor of format-specific gear bags
+
+**🗃️ Deckboxes** (Advanced Deck Management):
+- Feature-rich deck building and management system
+- Integration with "Planned vs Planted Garden" concepts:
+  - **Planned Decks**: Theoretical builds, no inventory validation
+  - **Planted Decks**: Physical decks with real-time collection integration
+- Deck rule validation (similar to Archidekt)
+- Multiple import formats for popular deck building sites
+- Custom checklists: missing cards, proxy status, completion tracking
+- Card checkout system with binder proxy generation
+
+### **Visual & Animation Polish** (Professional Differentiation)
+**Custom Animations**:
+- Card-to-binder animations when adding cards to collection
+- Multi-card batch animations with visual feedback
+- Authentic TCG-specific card backs in animations
+- Smooth transitions matching completed theme system
+
+**Aesthetic Customization**:
+- Binder spine colors and styles (multiple options)
+- Deckbox visual customization (common collector styles)
+- Inside-binder view with realistic page layouts
+- **Premium Feature**: Custom binder art creation with printable exports
+- Physical collection integration via printable binder designs
+
+## 🚀 **Implementation Phases**
+
+### **Phase 1: Core Infrastructure** (Next Priority)
+- User authentication and collection ownership
+- Bookshelf/Binder data models and API endpoints
+- Basic collection management (add/remove cards)
+- Simple search within collections
+
+### **Phase 2: Advanced Collection Features**
+- Bulk box implementation with advanced search
+- Card checkout system with proxy generation
+- Binder customization and visual improvements
+- Multi-TCG expansion beyond Magic
+
+### **Phase 3: Deck Management Integration** 
+- Deckbox creation and management
+- Planned vs Planted deck systems
+- Rule validation and import functionality  
+- Custom checklist generation
+
+### **Phase 4: Visual Polish & Premium Features**
+- Custom animations and card-back authenticity
+- Advanced aesthetic customization
+- Printable binder art generation
+- Professional collector workflow optimization
+
+## 🎯 **Legacy Features (Still Relevant)**
+
 **Preconstructed Product Integration** (High Priority Future Feature):
 - Auto-import feature for preconstructed products (Commander precons, starter decks, etc.)
 - One-click addition of complete product to collection and deck list
 - Support across all TCG games with product-specific handling
 - Integration with product databases and pricing information
-
-**Deck Building States: "Planned vs Planted Garden"** (Core Deck Builder Feature):
-- **Planned Decks** (Unbuilt): Theoretical decklists, wishlists, brewing concepts
-  - No inventory checking required
-  - Can exceed collection limits
-  - Focus on deck optimization and theory
-- **Planted Decks** (Built): Physical decks using actual owned cards
-  - Real-time inventory validation against collection
-  - Card borrowing/allocation system between decks
-  - Prevents double-allocation of single cards
-  - "Missing cards" alerts for incomplete builds
-  - Integration with collection management for deck assembly
 
 ---

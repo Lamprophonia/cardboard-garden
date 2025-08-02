@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import ThemeToggle from '../components/common/ThemeToggle';
 
 const SettingsPage = () => {
   const { isAuthenticated, user } = useAuth();
@@ -44,10 +45,7 @@ const SettingsPage = () => {
             </label>
           </div>
           <div className="setting-item">
-            <label>
-              <input type="checkbox" defaultChecked />
-              Enable dark mode
-            </label>
+            <ThemeToggle variant="select" />
           </div>
           <div className="setting-item">
             <label>

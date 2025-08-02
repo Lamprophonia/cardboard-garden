@@ -22,6 +22,7 @@
   --cg-accent-blue: #5499C7;       /* Lighter Steel Blue - Card backs */
 
   /* === NEUTRAL COLORS (Dark theme default) === */
+  --cg-neutral-50: #0F0F0F;        /* Deepest backgrounds - cards/panels */
   --cg-neutral-100: #1A1A1A;       /* Dark backgrounds */
   --cg-neutral-200: #2D2D2D;       /* Subtle borders */
   --cg-neutral-300: #404040;       /* Input borders */
@@ -132,6 +133,7 @@
   --cg-accent-blue: #4682B4;       /* Steel Blue */
 
   /* Neutral Colors - Light theme */
+  --cg-neutral-50: #FAFAFA;        /* Lightest backgrounds - cards/panels */
   --cg-neutral-100: #F8F9FA;       /* Light backgrounds */
   --cg-neutral-200: #E9ECEF;       /* Subtle borders */
   --cg-neutral-300: #DEE2E6;       /* Input borders */

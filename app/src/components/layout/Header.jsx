@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import ThemeToggle from '../common/ThemeToggle';
 
 function Header() {
   const { user, logout, isAuthenticated } = useAuth();
@@ -33,6 +34,8 @@ function Header() {
         </div>
         
         <div className="header-right">
+          <ThemeToggle variant="button" />
+          
           {isAuthenticated ? (
             <div className="user-menu">
               <div className="user-info">

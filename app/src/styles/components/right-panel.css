@@ -1,7 +1,7 @@
 /* === RIGHT PANEL COMPONENT === */
 .right-panel {
   grid-area: rightpanel;
-  background: white;
+  background: var(--cg-neutral-100);
   border-left: 1px solid var(--cg-neutral-200);
   padding: var(--cg-space-6) 0;
   overflow-y: auto;

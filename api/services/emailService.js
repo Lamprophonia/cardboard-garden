@@ -1,17 +1,24 @@
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 class EmailService {
   constructor() {
     this.transporter = null;
+    this.useSendGrid = false;
     this.setupTransporter();
   }
 
   setupTransporter() {
-    // Configure based on environment
-    if (process.env.NODE_ENV === 'production') {
-      // Production email service (e.g., SendGrid, AWS SES, etc.)
+    // Configure based on environment and available services
+    if (process.env.SENDGRID_API_KEY) {
+      // Use SendGrid if API key is available
+      this.useSendGrid = true;
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      console.log('📧 SendGrid email service configured');
+    } else if (process.env.NODE_ENV === 'production') {
+      // Fallback production email service
       this.transporter = nodemailer.createTransporter({
         service: process.env.EMAIL_SERVICE || 'gmail',
         auth: {
@@ -19,6 +26,7 @@ class EmailService {
           pass: process.env.EMAIL_PASSWORD
         }
       });
+      console.log('📧 Production email service configured (Nodemailer)');
     } else {
       // Development - use Ethereal Email for testing
       this.setupEtherealEmail();
@@ -231,27 +239,52 @@ class EmailService {
   }
 
   async sendEmail(mailOptions) {
-    if (!this.transporter) {
-      // Fallback to console logging in development
-      console.log('📧 Email would be sent:');
-      console.log('To:', mailOptions.to);
-      console.log('Subject:', mailOptions.subject);
-      console.log('Preview:', mailOptions.text);
-      return { success: true, messageId: 'console-fallback' };
-    }
-
     try {
-      const info = await this.transporter.sendMail(mailOptions);
-      
-      console.log('📧 Email sent successfully:');
-      console.log('Message ID:', info.messageId);
-      
-      // For development with Ethereal Email
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Preview URL:', nodemailer.getTestMessageUrl(info));
+      if (this.useSendGrid) {
+        // Use SendGrid
+        const msg = {
+          to: mailOptions.to,
+          from: mailOptions.from,
+          subject: mailOptions.subject,
+          html: mailOptions.html,
+          text: mailOptions.text
+        };
+
+        const result = await sgMail.send(msg);
+        console.log('📧 Email sent successfully via SendGrid');
+        console.log('Message ID:', result[0].headers['x-message-id']);
+        
+        return { 
+          success: true, 
+          messageId: result[0].headers['x-message-id'],
+          service: 'SendGrid'
+        };
+      } else if (this.transporter) {
+        // Use Nodemailer (Ethereal/Gmail/etc)
+        const info = await this.transporter.sendMail(mailOptions);
+        
+        console.log('📧 Email sent successfully via Nodemailer:');
+        console.log('Message ID:', info.messageId);
+        
+        // For development with Ethereal Email
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Preview URL:', nodemailer.getTestMessageUrl(info));
+        }
+        
+        return { 
+          success: true, 
+          messageId: info.messageId, 
+          previewUrl: nodemailer.getTestMessageUrl(info),
+          service: 'Nodemailer'
+        };
+      } else {
+        // Fallback to console logging in development
+        console.log('📧 Email would be sent:');
+        console.log('To:', mailOptions.to);
+        console.log('Subject:', mailOptions.subject);
+        console.log('Preview:', mailOptions.text);
+        return { success: true, messageId: 'console-fallback', service: 'Console' };
       }
-      
-      return { success: true, messageId: info.messageId, previewUrl: nodemailer.getTestMessageUrl(info) };
     } catch (error) {
       console.error('📧 Failed to send email:', error);
       return { success: false, error: error.message };

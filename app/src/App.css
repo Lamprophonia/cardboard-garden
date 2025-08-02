@@ -330,7 +330,7 @@ a:hover {
 }
 
 .flip-button:hover {
-  background: white;
+  background: var(--cg-neutral-100);
   transform: scale(1.1);
   box-shadow: var(--cg-shadow-base);
 }
