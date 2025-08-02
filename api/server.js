@@ -278,6 +278,76 @@ app.get('/api/auth/me', authenticateToken, async (req, res) => {
   }
 });
 
+// Account deletion - Soft delete (user-facing)
+app.delete('/api/auth/account', authenticateToken, async (req, res) => {
+  try {
+    const { password } = req.body;
+    
+    if (!password) {
+      return res.status(400).json({ error: 'Password confirmation required for account deletion' });
+    }
+
+    const result = await authService.deleteAccount(req.user.id, password);
+    
+    if (result.success) {
+      res.json({
+        success: true,
+        message: 'Account deleted successfully'
+      });
+    } else {
+      res.status(400).json({ error: result.error });
+    }
+  } catch (error) {
+    console.error('Account deletion endpoint error:', error);
+    res.status(500).json({ error: 'Account deletion failed' });
+  }
+});
+
+// Hard delete for test cleanup (development only)
+app.delete('/api/test/cleanup-user', async (req, res) => {
+  try {
+    if (process.env.NODE_ENV === 'production') {
+      return res.status(403).json({ error: 'Test cleanup not available in production' });
+    }
+
+    const { email, username } = req.body;
+    
+    if (!email && !username) {
+      return res.status(400).json({ error: 'Email or username required for cleanup' });
+    }
+
+    // Create fresh database connection for this operation
+    const connection = await mysql.createConnection(dbConfig);
+
+    try {
+      let whereClause = '';
+      let params = [];
+      
+      if (email) {
+        whereClause = 'email = ?';
+        params.push(email);
+      } else {
+        whereClause = 'username = ?';
+        params.push(username);
+      }
+
+      // Hard delete user and all related data (CASCADE will handle related tables)
+      const [result] = await connection.execute(`DELETE FROM users WHERE ${whereClause}`, params);
+      
+      res.json({
+        success: true,
+        message: `User cleaned up successfully`,
+        deletedRows: result.affectedRows
+      });
+    } finally {
+      await connection.end();
+    }
+  } catch (error) {
+    console.error('Test cleanup endpoint error:', error);
+    res.status(500).json({ error: 'Test cleanup failed' });
+  }
+});
+
 // Magic: The Gathering routes
 app.get('/api/cards/search', async (req, res) => {
   try {

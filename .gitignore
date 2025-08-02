@@ -47,6 +47,10 @@ Thumbs.db
 # Local development files
 .maintenance-prompts.md
 
+# External project documentation (for reference only)
+docs/TEST_AUTOMATION_GUIDE.md
+docs/API_ENDPOINTS.md
+
 # Temporary scripts and analysis files
 scripts/temp/
 api/scripts/temp/

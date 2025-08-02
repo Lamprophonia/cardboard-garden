@@ -282,6 +282,59 @@ class AuthService {
       await db.end();
     }
   }
+
+  async deleteAccount(userId, password) {
+    const db = await this.getDbConnection();
+    
+    try {
+      // First, verify the user exists and password is correct
+      const [users] = await db.execute(
+        'SELECT id, username, email, password_hash FROM users WHERE id = ? AND is_active = TRUE',
+        [userId]
+      );
+
+      if (users.length === 0) {
+        return { success: false, error: 'User not found or already deactivated.' };
+      }
+
+      const user = users[0];
+
+      // Verify password
+      const isValidPassword = await this.comparePassword(password, user.password_hash);
+      if (!isValidPassword) {
+        return { success: false, error: 'Invalid password. Account deletion cancelled.' };
+      }
+
+      // Soft delete: Set deleted_at timestamp and deactivate
+      const deletedAt = new Date();
+      await db.execute(
+        `UPDATE users 
+         SET is_active = FALSE, 
+             deleted_at = ?, 
+             updated_at = ?,
+             email = CONCAT('deleted_', id, '_', email),
+             username = CONCAT('deleted_', id, '_', username)
+         WHERE id = ?`,
+        [deletedAt, deletedAt, userId]
+      );
+
+      // Invalidate all user sessions
+      await db.execute('DELETE FROM user_sessions WHERE user_id = ?', [userId]);
+
+      console.log(`User account soft-deleted: ${user.username} (${user.email})`);
+
+      return { 
+        success: true, 
+        message: 'Account has been successfully deleted. All your data has been removed.' 
+      };
+
+    } catch (error) {
+      console.error('Delete account error:', error);
+      return { success: false, error: 'Account deletion failed. Please try again.' };
+    } finally {
+      await db.end();
+    }
+  }
 }
 
 module.exports = new AuthService();
