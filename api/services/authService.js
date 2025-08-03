@@ -50,7 +50,6 @@ class AuthService {
 
   async registerUser(username, email, password) {
     const db = await this.getDbConnection();
-    
     try {
       // Check if user already exists
       const [existingUsers] = await db.execute(
@@ -67,6 +66,16 @@ class AuthService {
       const verificationToken = this.generateSecureToken();
       const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
+      // Debug: log the generated token and values to be inserted
+      console.log('[registerUser] Generated verificationToken:', verificationToken);
+      console.log('[registerUser] Insert values:', {
+        username,
+        email,
+        passwordHash,
+        verificationToken,
+        verificationExpires
+      });
+
       // Insert new user
       const [result] = await db.execute(
         `INSERT INTO users (username, email, password_hash, email_verification_token, email_verification_expires) 
@@ -75,6 +84,9 @@ class AuthService {
       );
 
       const userId = result.insertId;
+
+      // Debug: log the insertId
+      console.log('[registerUser] New user insertId:', userId);
 
       // Send verification email
       const emailResult = await emailService.sendVerificationEmail(email, username, verificationToken);
@@ -161,13 +173,18 @@ class AuthService {
 
   async verifyEmail(token) {
     const db = await this.getDbConnection();
-    
     try {
+      // Debug: print the incoming token
+      console.log('[verifyEmail] Incoming token:', token);
+
       // Find user with this verification token
       const [users] = await db.execute(
-        'SELECT id, username, email, email_verification_expires FROM users WHERE email_verification_token = ?',
+        'SELECT id, username, email, email_verification_token, email_verification_expires FROM users WHERE email_verification_token = ?',
         [token]
       );
+
+      // Debug: print the query result
+      console.log('[verifyEmail] Query result:', users);
 
       if (users.length === 0) {
         return { success: false, error: 'Invalid verification token' };

@@ -1,3 +1,4 @@
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -211,12 +212,19 @@ app.get('/api/auth/verify-email', async (req, res) => {
   try {
     const { token } = req.query;
 
+    // Debug: log the raw token from the request
+    console.log('[verify-email endpoint] Token from req.query:', token);
+
     if (!token) {
       return res.status(400).json({ error: 'Verification token is required' });
     }
 
+    if (token === 'YOURTOKEN') {
+      console.error('[verify-email endpoint] ERROR: Token is the literal string "YOURTOKEN". This should never happen.');
+    }
+
     const result = await authService.verifyEmail(token);
-    
+
     if (result.success) {
       res.json({
         success: true,

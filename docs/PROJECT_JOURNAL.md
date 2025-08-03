@@ -191,4 +191,33 @@
 - Support across all TCG games with product-specific handling
 - Integration with product databases and pricing information
 
+
+## Entry - August 2, 2025
+
+### Debugging & Maintenance Session
+
+**Focus:**
+- Persistent debugging of user registration and email verification flow
+- Added debug logging to backend registration logic to trace verification token issues
+- Confirmed frontend token extraction and backend token handling
+- Identified and began resolving issue where `email_verification_token` was NULL in new user records
+- Maintenance prompt file (`.maintenance-prompts.md`) created for ongoing project health
+
+**Key Progress:**
+- Fixed dynamic import bug in frontend email verification page
+- Added backend debug logs for registration and token generation
+- Provided SQL cleanup for incomplete user records
+- Confirmed frontend and backend token tracing is now robust
+- Maintenance prompt file authored with Clause Sonnet for future sweeps
+
+**Current Blockers:**
+- Registration flow: `email_verification_token` sometimes NULL in DB (debug logging now in place)
+- Need to verify backend logs and DB after next registration attempt
+
+**Next Steps:**
+1. Review backend logs for token generation and DB insert
+2. Continue manual and automated testing of registration/verification
+3. Run full maintenance sweep using new prompt file
+4. Document any further issues or fixes in next session
+
 ---

@@ -25,6 +25,10 @@ cardboard.garden           → Frontend (React app)
 api.cardboard.garden       → Backend API
 admin.cardboard.garden     → Admin panel (future)
 staging.cardboard.garden   → Testing environment
+em5571.cardboard.garden   → CNAME to u54875243.wl244.sendgrid.net (SendGrid link branding)
+s1._domainkey.cardboard.garden → CNAME to s1.domainkey.u54875243.wl244.sendgrid.net (SendGrid DKIM)
+s2._domainkey.cardboard.garden → CNAME to s2.domainkey.u54875243.wl244.sendgrid.net (SendGrid DKIM)
+_dmarc.cardboard.garden   → TXT v=DMARC1; p=none; (SendGrid DMARC)
 ```
 
 ---
@@ -39,14 +43,10 @@ staging.cardboard.garden   → Testing environment
 - **Backend**: Railway/Render (Docker containers)
 - **Database**: PlanetScale/Supabase (managed MySQL/PostgreSQL)
 
-**Pros**:
 - Zero DevOps overhead
 - Automatic scaling
 - CI/CD included
 - SSL certificates automatic
-- ~$20-50/month total
-
-**Cons**:
 - Less control
 - Vendor lock-in
 - Higher per-resource costs at scale
@@ -62,9 +62,32 @@ staging.cardboard.garden   → Testing environment
 - **SSL**: Certbot (Let's Encrypt)
 
 **Pros**:
-- Full control
 - Cost effective
-- Learning experience
+## ✉️ **Domain-Based Email & Link Branding**
+
+### **Intentions & Rationale**
+
+### **Required DNS Records for SendGrid**
+Add these records to your DNS provider to enable domain authentication and link branding:
+
+| Type  | Host                          | Value                                      |
+|-------|-------------------------------|---------------------------------------------|
+| CNAME | em5571.cardboard.garden       | u54875243.wl244.sendgrid.net                |
+| CNAME | s1._domainkey.cardboard.garden| s1.domainkey.u54875243.wl244.sendgrid.net   |
+| CNAME | s2._domainkey.cardboard.garden| s2.domainkey.u54875243.wl244.sendgrid.net   |
+| TXT   | _dmarc.cardboard.garden       | v=DMARC1; p=none;                           |
+
+After adding, return to SendGrid and click "Verify" for each record. This enables full domain-based email and link branding.
+
+### **Implementation Plan**
+1. **Domain Ownership**: Secure `cardboard.garden` and configure DNS with registrar (Namecheap/Cloudflare).
+2. **SendGrid Setup**: Authenticate domain and enable link branding in SendGrid dashboard.
+3. **Email Service Update**: Update backend email service to use `noreply@cardboard.garden` as the sender address.
+4. **Branded Links**: Ensure all email templates use branded links (no localhost or IPs in production emails).
+5. **Testing**: Verify deliverability and branding before launch.
+
+**Reference**: See .copilot-preferences.md "DEPLOYMENT PLAN" and "Next Priorities" for additional context and intentions.
+
 - Can host multiple projects
 
 **Cons**:

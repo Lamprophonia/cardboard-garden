@@ -81,7 +81,10 @@ const LoginPage = () => {
               {error}
               {error.includes('verify your email') && (
                 <div className="auth-error-actions">
-                  <Link to="/verify-email" className="auth-link">
+                  <Link
+                    to={`/verify-email?email=${encodeURIComponent(formData.usernameOrEmail)}`}
+                    className="auth-link"
+                  >
                     Resend verification email
                   </Link>
                 </div>

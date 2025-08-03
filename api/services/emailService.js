@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+// ...existing code...
 
 class EmailService {
   constructor() {
@@ -72,23 +71,90 @@ class EmailService {
         <head>
           <meta charset="utf-8">
           <title>Welcome to Cardboard Garden</title>
+          <link href="https://fonts.googleapis.com/css2?family=Qilka:wght@400;700;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(45deg, #d4af37, #ffd700); padding: 20px; text-align: center; border-radius: 8px; }
-            .header h1 { color: #000; margin: 0; }
-            .content { background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; }
-            .verify-button { 
-              display: inline-block; 
-              background: linear-gradient(45deg, #d4af37, #ffd700); 
-              color: #000; 
-              padding: 12px 24px; 
-              text-decoration: none; 
-              border-radius: 6px; 
-              font-weight: bold;
-              margin: 20px 0;
+            body {
+              font-family: 'Qilka', 'Inter', Arial, sans-serif;
+              background: #0F0F0F;
+              color: #E5E7EB;
+              line-height: 1.6;
+              margin: 0;
             }
-            .footer { text-align: center; color: #666; font-size: 12px; }
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 32px 20px;
+              background: #1A1A1A;
+              border-radius: 16px;
+              box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+            }
+            .header {
+              background: linear-gradient(90deg, #4A7C2A 0%, #D4AC0D 100%);
+              padding: 24px 0 16px 0;
+              text-align: center;
+              border-radius: 12px 12px 0 0;
+            }
+            .header h1 {
+              color: #F3F4F6;
+              font-family: 'Qilka', 'Montserrat', 'Inter', sans-serif;
+              font-weight: 800;
+              font-size: 2.25rem;
+              margin: 0 0 4px 0;
+              letter-spacing: 1px;
+            }
+            .header p {
+              color: #D4AC0D;
+              font-size: 1.1rem;
+              margin: 0;
+              font-weight: 500;
+            }
+            .content {
+              background: #2D2D2D;
+              padding: 28px 20px;
+              border-radius: 0 0 12px 12px;
+              margin: 0;
+            }
+            .verify-button {
+              display: inline-block;
+              background: linear-gradient(90deg, #4A7C2A 0%, #D4AC0D 100%);
+              color: #0F0F0F;
+              padding: 14px 32px;
+              text-decoration: none;
+              border-radius: 8px;
+              font-weight: 700;
+              font-size: 1.1rem;
+              margin: 24px 0;
+              box-shadow: 0 2px 8px 0 rgba(212,172,13,0.15);
+              transition: background 0.2s;
+            }
+            .verify-button:hover {
+              background: linear-gradient(90deg, #5B8B36 0%, #FFD700 100%);
+              color: #000;
+            }
+            .footer {
+              text-align: center;
+              color: #9CA3AF;
+              font-size: 13px;
+              margin-top: 32px;
+            }
+            .link-box {
+              word-break: break-all;
+              background: #1A1A1A;
+              color: #D4AC0D;
+              padding: 12px;
+              border-radius: 6px;
+              font-size: 0.98rem;
+              margin: 12px 0;
+              border: 1px solid #D4AC0D;
+            }
+            ul {
+              color: #D1D5DB;
+              margin: 16px 0 0 0;
+              padding-left: 20px;
+            }
+            li {
+              margin-bottom: 6px;
+            }
           </style>
         </head>
         <body>
@@ -97,24 +163,16 @@ class EmailService {
               <h1>🃏 Cardboard Garden</h1>
               <p>Magic: The Gathering Collection Manager</p>
             </div>
-            
             <div class="content">
-              <h2>Welcome, ${username}!</h2>
+              <h2 style="color:#F3F4F6; font-family:'Qilka','Inter',sans-serif; font-weight:700;">Welcome, ${username}!</h2>
               <p>Thank you for joining Cardboard Garden, your personal Magic: The Gathering collection manager.</p>
-              
               <p>To get started and access your collection, please verify your email address by clicking the button below:</p>
-              
               <div style="text-align: center;">
                 <a href="${verificationUrl}" class="verify-button">Verify Email Address</a>
               </div>
-              
               <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
-              <p style="word-break: break-all; background: #fff; padding: 10px; border-radius: 4px;">
-                ${verificationUrl}
-              </p>
-              
-              <p><strong>This verification link will expire in 24 hours.</strong></p>
-              
+              <div class="link-box">${verificationUrl}</div>
+              <p><strong style="color:#D4AC0D;">This verification link will expire in 24 hours.</strong></p>
               <p>Once verified, you'll be able to:</p>
               <ul>
                 <li>🔍 Search through thousands of Magic cards</li>
@@ -123,7 +181,6 @@ class EmailService {
                 <li>🔄 View both sides of double-faced cards</li>
               </ul>
             </div>
-            
             <div class="footer">
               <p>If you didn't create an account with Cardboard Garden, please ignore this email.</p>
               <p>This email was sent from Cardboard Garden Collection Manager</p>
@@ -162,24 +219,91 @@ class EmailService {
         <head>
           <meta charset="utf-8">
           <title>Password Reset - Cardboard Garden</title>
+          <link href="https://fonts.googleapis.com/css2?family=Qilka:wght@400;700;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(45deg, #d4af37, #ffd700); padding: 20px; text-align: center; border-radius: 8px; }
-            .header h1 { color: #000; margin: 0; }
-            .content { background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; }
-            .reset-button { 
-              display: inline-block; 
-              background: linear-gradient(45deg, #e74c3c, #c0392b); 
-              color: #fff; 
-              padding: 12px 24px; 
-              text-decoration: none; 
-              border-radius: 6px; 
-              font-weight: bold;
-              margin: 20px 0;
+            body {
+              font-family: 'Qilka', 'Inter', Arial, sans-serif;
+              background: #0F0F0F;
+              color: #E5E7EB;
+              line-height: 1.6;
+              margin: 0;
             }
-            .footer { text-align: center; color: #666; font-size: 12px; }
-            .warning { background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 4px; margin: 10px 0; }
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 32px 20px;
+              background: #1A1A1A;
+              border-radius: 16px;
+              box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+            }
+            .header {
+              background: linear-gradient(90deg, #4A7C2A 0%, #D4AC0D 100%);
+              padding: 24px 0 16px 0;
+              text-align: center;
+              border-radius: 12px 12px 0 0;
+            }
+            .header h1 {
+              color: #F3F4F6;
+              font-family: 'Qilka', 'Montserrat', 'Inter', sans-serif;
+              font-weight: 800;
+              font-size: 2.25rem;
+              margin: 0 0 4px 0;
+              letter-spacing: 1px;
+            }
+            .header p {
+              color: #D4AC0D;
+              font-size: 1.1rem;
+              margin: 0;
+              font-weight: 500;
+            }
+            .content {
+              background: #2D2D2D;
+              padding: 28px 20px;
+              border-radius: 0 0 12px 12px;
+              margin: 0;
+            }
+            .reset-button {
+              display: inline-block;
+              background: linear-gradient(90deg, #4A7C2A 0%, #D4AC0D 100%);
+              color: #0F0F0F;
+              padding: 14px 32px;
+              text-decoration: none;
+              border-radius: 8px;
+              font-weight: 700;
+              font-size: 1.1rem;
+              margin: 24px 0;
+              box-shadow: 0 2px 8px 0 rgba(212,172,13,0.15);
+              transition: background 0.2s;
+            }
+            .reset-button:hover {
+              background: linear-gradient(90deg, #5B8B36 0%, #FFD700 100%);
+              color: #000;
+            }
+            .footer {
+              text-align: center;
+              color: #9CA3AF;
+              font-size: 13px;
+              margin-top: 32px;
+            }
+            .link-box {
+              word-break: break-all;
+              background: #1A1A1A;
+              color: #D4AC0D;
+              padding: 12px;
+              border-radius: 6px;
+              font-size: 0.98rem;
+              margin: 12px 0;
+              border: 1px solid #D4AC0D;
+            }
+            .warning {
+              background: #2D2D2D;
+              border: 1px solid #F59E0B;
+              color: #F59E0B;
+              padding: 12px;
+              border-radius: 6px;
+              margin: 10px 0 18px 0;
+              font-size: 1rem;
+            }
           </style>
         </head>
         <body>
@@ -188,29 +312,20 @@ class EmailService {
               <h1>🃏 Cardboard Garden</h1>
               <p>Password Reset Request</p>
             </div>
-            
             <div class="content">
-              <h2>Hello, ${username}</h2>
+              <h2 style="color:#F3F4F6; font-family:'Qilka','Inter',sans-serif; font-weight:700;">Hello, ${username}</h2>
               <p>We received a request to reset your password for your Cardboard Garden account.</p>
-              
               <div class="warning">
                 <strong>⚠️ Security Notice:</strong> If you didn't request this password reset, please ignore this email. Your account remains secure.
               </div>
-              
               <p>To reset your password, click the button below:</p>
-              
               <div style="text-align: center;">
                 <a href="${resetUrl}" class="reset-button">Reset Password</a>
               </div>
-              
               <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
-              <p style="word-break: break-all; background: #fff; padding: 10px; border-radius: 4px;">
-                ${resetUrl}
-              </p>
-              
-              <p><strong>This password reset link will expire in 1 hour.</strong></p>
+              <div class="link-box">${resetUrl}</div>
+              <p><strong style="color:#D4AC0D;">This password reset link will expire in 1 hour.</strong></p>
             </div>
-            
             <div class="footer">
               <p>This email was sent from Cardboard Garden Collection Manager</p>
               <p>For security reasons, this link can only be used once.</p>

@@ -121,8 +121,8 @@ const RegisterPage = () => {
       const result = await register(formData.username, formData.email, formData.password);
       
       if (result.success) {
-        // Redirect to email verification page
-        navigate('/verify-email');
+        // Redirect to email verification page, passing email as query param
+        navigate(`/verify-email?email=${encodeURIComponent(formData.email)}`);
       } else {
         setErrors({ general: result.error });
       }
